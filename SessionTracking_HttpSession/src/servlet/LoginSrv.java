@@ -39,6 +39,7 @@ public class LoginSrv extends HttpServlet {
 			ResultSet rs = stmt
 					.executeQuery("select name,password from naukri where  name="
 							+ name1 + "and password=" + pass1);
+			system.out.println("adding manually");
 
 			if (rs.next()) {
 				validName = rs.getString(1);
