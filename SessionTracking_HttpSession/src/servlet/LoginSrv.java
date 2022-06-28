@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class LoginSrv extends HttpServlet {
-	Connection con = null;
-	Statement stmt = null;
+	Connection con;
+	Statement stmt;
 	String validName;
 	String validPassword;
 
@@ -31,15 +31,14 @@ public class LoginSrv extends HttpServlet {
 
 		try {
 
-			Connection con = DBConnection.createConnection();
+			  con = DBConnection.createConnection();
 			// select * from naukri where username='saif' and password="1234";
-
-			System.out.println("nahi mila");
+			 String query ="select name,password from naukri where  name="+ name1 + "and password=" + pass1;
+			 System.out.println("query"+query);
 			stmt=con.createStatement();
 			ResultSet rs = stmt
-					.executeQuery("select name,password from naukri where  name="
-							+ name1 + "and password=" + pass1);
-			System.out.println("adding manually");
+					.executeQuery(query);
+			
 
 			if (rs.next()) {
 				validName = rs.getString(1);
