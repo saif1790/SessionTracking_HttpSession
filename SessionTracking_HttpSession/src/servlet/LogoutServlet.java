@@ -20,7 +20,8 @@ public class LogoutServlet extends HttpServlet
 		 res.setContentType("text/html");
 		 req.getRequestDispatcher("index.html").include(req, res);
 		 pw.println("</br>");
-		 pw.println("user successfully logout");
+		 pw.println("<hr width='100%'/>");
+		 pw.println("User successfully logout");
 		}
 	 public void doPost(HttpServletRequest req , HttpServletResponse res)throws IOException,ServletException
 	   {

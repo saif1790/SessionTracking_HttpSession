@@ -21,10 +21,13 @@ public class ProfileServlet extends HttpServlet
 		res.setContentType("text/html");  
         PrintWriter out=res.getWriter();   
         HttpSession session=req.getSession(false);  
+        System.out.println(session);
         if(session!=null){  
+        	System.out.println(session);
         String name=(String)session.getAttribute("name");  
         req.getRequestDispatcher("index.html").include(req, res);
         out.print("<br/>");
+        out.println("<hr width='100%'/>");
         out.print("Hello, "+name+" Welcome to Profile");  
         }  
         else{  

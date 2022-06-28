@@ -45,16 +45,16 @@ PreparedStatement ps=null;
     	 */
           try
           {
-        	  Class.forName("oracle.jdbc.driver.OracleDriver");
-        	    con= DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","tiger");
-        	    ps=con.prepareStatement("insert into naukri values(?,?,?,?,?,?,?,?)");
+        	  con = DBConnection.createConnection();
+        	    
+        	    ps=con.prepareStatement("insert into naukri(name,password,exp,skill,city,salary) values(?,?,?,?,?,?)");
         	  ps.setString(1, name);
-        	  ps.setInt(4, age1);
-        	  ps.setString(3, address);
-        	  ps.setString(7, city);
-        	  ps.setInt(8, sal1);
-        	  ps.setString(5, exp);
-        	  ps.setString(6, skil);
+        	 // ps.setInt(4, age1);
+        	  //ps.setString(3, address);
+        	  ps.setString(5, city);
+        	  ps.setInt(6, sal1);
+        	  ps.setString(3, exp);
+        	  ps.setString(4, skil);
         	  ps.setString(2, pass);
         	  HttpSession session2 = req.getSession();
         	  session2.setMaxInactiveInterval(10 * 60);
