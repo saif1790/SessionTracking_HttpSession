@@ -21,7 +21,7 @@ public class LogoutServlet extends HttpServlet
 		 req.getRequestDispatcher("index.html").include(req, res);
 		 pw.println("</br>");
 		 pw.println("<hr width='100%'/>");
-		 pw.println("User successfully logout");
+		 pw.println("User successfully logged out") ;
 		}
 	 public void doPost(HttpServletRequest req , HttpServletResponse res)throws IOException,ServletException
 	   {

@@ -24,7 +24,9 @@ public class Servlet2 extends HttpServlet
     	 session.setAttribute("exp", exp);
     	 session.setAttribute("skil", skil);
     	  String sid=session.getId();
+    	  pw.print("<head><title>Registration Page</title></head>");
     	 pw.print("<form action='Srv3' method='post'><br>");
+    	// pw.print("<form action='previewSrv' method='post'><br>");
          pw.print("Prefered City");
          pw.print("<select name='city'>");
    	     pw.print("<option value='noida'>Noida");

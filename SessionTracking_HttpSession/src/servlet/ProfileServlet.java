@@ -25,10 +25,11 @@ public class ProfileServlet extends HttpServlet
         if(session!=null){  
         	System.out.println(session);
         String name=(String)session.getAttribute("name");  
+        out.print("<head><title>Profile Page</title></head>");
         req.getRequestDispatcher("index.html").include(req, res);
         out.print("<br/>");
         out.println("<hr width='100%'/>");
-        out.print("Hello, "+name+" Welcome to Profile");  
+        out.print("Hello, "+name.toUpperCase()+" Welcome to Profile");  
         }  
         else{  
             out.print("Please login first");  

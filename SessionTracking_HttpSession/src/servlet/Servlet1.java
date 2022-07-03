@@ -26,6 +26,7 @@ public class Servlet1 extends HttpServlet
     	    session.setAttribute("age", age);
     	    System.out.println(pass);
     	 String sid=session.getId();
+    	 pw.print("<head><title>Registration Page</title></head>");
           pw.print("<form action='Srv2' method='post'><br>");
           pw.print("Experience:<br/><input type='text' name='exp'><br>");
           pw.print("Key Skil:<br/>");

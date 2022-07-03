@@ -34,6 +34,15 @@ PreparedStatement ps=null;
     	 String exp=(String)session.getAttribute("exp");
     	 String skil=(String)session.getAttribute("skil");
     	 
+/*    	 pw.print("<form action=''>");
+    	 pw.print("Name  :"  + name);
+    	 pw.print("Address  :"  + address);
+    	 pw.print("Age  :"  + age);
+    	 pw.print("Exp  :"  + exp);
+    	 pw.print("Skill  :"  + skil);
+    	 pw.print("City  :"  + city);
+    	 pw.print("Salary  :"  + sal1);
+    	 pw.print("</form");*/
     	 
     	/* FileInputStream fis = new FileInputStream("src/db.properties");
     	 Properties p= new Properties();
@@ -57,7 +66,7 @@ PreparedStatement ps=null;
         	  ps.setString(4, skil);
         	  ps.setString(2, pass);
         	  HttpSession session2 = req.getSession();
-        	  session2.setMaxInactiveInterval(10 * 60);
+        	  session2.setMaxInactiveInterval(60);
         	  int i=ps.executeUpdate();
         	  if(i==0)
         	  {
