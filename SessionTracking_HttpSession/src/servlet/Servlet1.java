@@ -19,12 +19,13 @@ public class Servlet1 extends HttpServlet
     	 String address=req.getParameter("address");
     	 String pass=req.getParameter("password");
     	  String age=req.getParameter("age");
+    	  String encryptedPassword = EncryptPassword.getEncryptedPassword(pass);
     	  HttpSession session= req.getSession();
     	    session.setAttribute("name", name);
     	    session.setAttribute("address", address);
-    	    session.setAttribute("password", pass);
+    	    session.setAttribute("password", encryptedPassword);
     	    session.setAttribute("age", age);
-    	    System.out.println(pass);
+    	    System.out.println(encryptedPassword);
     	 String sid=session.getId();
     	 pw.print("<head><title>Registration Page</title></head>");
           pw.print("<form action='Srv2' method='post'><br>");
