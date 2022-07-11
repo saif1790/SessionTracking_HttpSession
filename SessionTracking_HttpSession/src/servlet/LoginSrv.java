@@ -32,9 +32,6 @@ public class LoginSrv extends HttpServlet {
 		String pass = req.getParameter("password");
 		String enryptedPassword = EncryptPassword.getEncryptedPassword(pass);
 		String pass1 = "'" + enryptedPassword + "'";
-		System.out.println("enryptedPassword--"+enryptedPassword);
-		System.out.println("45678"+pass1);
-
 		try {
 
 			con = DBConnection.createConnection();
@@ -48,12 +45,10 @@ public class LoginSrv extends HttpServlet {
 			if (rs.next()) {
 				validName = rs.getString(1);
 				validPassword = rs.getString(2);
-				System.out.println("valid"+validPassword);
 			}
 
 			if (name.equalsIgnoreCase(validName) && enryptedPassword.equals(validPassword)) {
 				
-				System.out.println("999999999999");
 				Calendar cal = Calendar.getInstance();
 
 				int date = cal.get(Calendar.DAY_OF_WEEK) - 1;
@@ -91,7 +86,6 @@ public class LoginSrv extends HttpServlet {
 				// req.getRequestDispatcher("login.html");
 
 			} else {
-				System.out.println("0000000");
 				pw.println("<font color='red'>User not valid</font>");
 				req.getRequestDispatcher("login.html").include(req, res);
 			}
