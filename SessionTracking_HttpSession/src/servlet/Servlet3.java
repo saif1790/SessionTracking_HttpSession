@@ -25,6 +25,7 @@ PreparedStatement ps=null;
     	 HttpSession session=req.getSession(false);
     	String srv3= session.getId();
     	 String name=(String)session.getAttribute("name");
+    	 String email=(String)session.getAttribute("email");
     	 String address=(String)session.getAttribute("address");
     	 String pass=(String)session.getAttribute("password");
     	 
@@ -55,7 +56,7 @@ PreparedStatement ps=null;
           {
         	  con = DBConnection.createConnection();
         	    
-        	    ps=con.prepareStatement("insert into naukri(name,password,exp,skill,city,salary) values(?,?,?,?,?,?)");
+        	    ps=con.prepareStatement("insert into naukri(name,password,exp,skill,city,salary,email) values(?,?,?,?,?,?,?)");
         	  ps.setString(1, name);
         	 // ps.setInt(4, age1);
         	  //ps.setString(3, address);
@@ -64,6 +65,7 @@ PreparedStatement ps=null;
         	  ps.setString(3, exp);
         	  ps.setString(4, skil);
         	  ps.setString(2, pass);
+        	  ps.setString(7, email);
         	  HttpSession session2 = req.getSession();
         	  session2.setMaxInactiveInterval(60);
         	  int i=ps.executeUpdate();

@@ -50,6 +50,40 @@
 		<servlet-name>change Password</servlet-name>
 		<url-pattern>/changePasswordSrv</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>Forgot Password</servlet-name>
+		<servlet-class>servlet.ForgotPassword</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Forgot Password</servlet-name>
+		<url-pattern>/forgotPassword</url-pattern>
+	</servlet-mapping>
+
+	<!-- To send email, a SMTP server is needed. So we need to configure SMTP
+	settings in the web.xml file like this: -->
+	
+	<context-param>
+		<param-name>host</param-name>
+		<param-value>smtp.gmail.com</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>port</param-name>
+		<param-value>587</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>email</param-name>
+		<param-value>saif.tech1790@gmail.com</param-value>
+	</context-param>
+	<context-param>
+		<param-name>name</param-name>
+		<param-value>no-reply</param-value>
+	</context-param>
+	<context-param>
+		<param-name>pass</param-name>
+		<param-value>ttknedqsylmdlirw</param-value>
+	</context-param>
 	<!-- <servlet> <servlet-name>Preview</servlet-name> <servlet-class>servlet.PreviewServlet</servlet-class> 
 		</servlet> <servlet-mapping> <servlet-name>Preview</servlet-name> <url-pattern>/previewServlet</url-pattern> 
 		</servlet-mapping> -->

@@ -30,6 +30,7 @@
 									placeholder="Enter New Confirm Password" id="newCnfPassword" type="password"
 									class="validate" name="newCnfPassword">
 								<button type="submit" class="btn red">Submit</button>
+								<a href="forgotPassword.jsp">Forgot Password</a>
 							</form>
 						</div>
 					</div>

@@ -24,13 +24,13 @@ public class ProfileServlet extends HttpServlet
         System.out.println(session);
         if(session!=null){  
         	System.out.println(session);
-        String name=(String)session.getAttribute("name");  
+        String email=(String)session.getAttribute("email");  
         out.print("<head><title>Profile Page</title></head>");
         req.getRequestDispatcher("index.html").include(req, res);
         out.print("<br/>");
         out.println("<hr width='100%'/>");
-        out.print("Hello, "+name.toUpperCase()+" Welcome to Profile");  
-        out.print("<h3 style='text-align:left;'><a href='changePassword.jsp'>Change Password</h3>");  
+        out.print("Hello, "+email.toUpperCase()+" Welcome to Profile");  
+        out.print("<h3 style='text-align:right;color:green;'><a href='changePassword.jsp'>Change Password</h3>");  
         }  
         else{  
             out.print("Please login first");  

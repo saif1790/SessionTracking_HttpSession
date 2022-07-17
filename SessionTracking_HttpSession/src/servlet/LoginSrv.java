@@ -19,35 +19,35 @@ import javax.servlet.http.HttpSession;
 public class LoginSrv extends HttpServlet {
 	Connection con;
 	Statement stmt;
-	String validName;
+	String validEmail;
 	String validPassword;
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws IOException, ServletException {
 		res.setContentType("text/html");
 		PrintWriter pw = res.getWriter();
-		String name = req.getParameter("username");
-		String name1 = "'" + name + "'";
-		System.out.println(name1);
+		String email = req.getParameter("email");
+		String email1 = "'" + email + "'";
+		System.out.println(email1);
 		String pass = req.getParameter("password");
 		String enryptedPassword = EncryptPassword.getEncryptedPassword(pass);
-		String pass1 = "'" + enryptedPassword + "'";
+		String pass1 = "'" + pass + "'";
 		try {
 
 			con = DBConnection.createConnection();
 			// select * from naukri where username='saif' and password="1234";
-			String query = "select name,password from naukri where  name="
-					+ name1 + "and password=" + pass1;
+			String query = "select email,password from naukri where  email="
+					+ email1 + "and password=" + pass1;
 			System.out.println("query" + query);
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 
 			if (rs.next()) {
-				validName = rs.getString(1);
+				validEmail = rs.getString(1);
 				validPassword = rs.getString(2);
 			}
 
-			if (name.equalsIgnoreCase(validName) && enryptedPassword.equals(validPassword)) {
+			if (email.equalsIgnoreCase(validEmail) && pass.equals(validPassword)) {
 				
 				Calendar cal = Calendar.getInstance();
 
@@ -76,9 +76,9 @@ public class LoginSrv extends HttpServlet {
 				// System.out.println("name"+name+"validName"+validName);
 				HttpSession session = req.getSession();
 				req.getRequestDispatcher("index.html").include(req, res);
-				session.setAttribute("name", name);
+				session.setAttribute("email", validEmail);
 				req.getRequestDispatcher("welcome.jsp").include(req, res);
-				pw.println("<h3 align='right'>" + name.toUpperCase() + "</h3>");
+				pw.println("<h3 style='text-color:red align='right'>" + email.toUpperCase() + "</h3>");
 
 				session.setMaxInactiveInterval(300);
 				// session.setAttribute("timeOutTimeInSeconds", 30);

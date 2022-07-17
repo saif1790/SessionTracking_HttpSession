@@ -16,12 +16,14 @@ public class Servlet1 extends HttpServlet
     	 res.setContentType("text/html");
     	 PrintWriter pw=res.getWriter();
     	 String name=req.getParameter("name");
+    	 String email=req.getParameter("email");
     	 String address=req.getParameter("address");
     	 String pass=req.getParameter("password");
     	  String age=req.getParameter("age");
     	  String encryptedPassword = EncryptPassword.getEncryptedPassword(pass);
     	  HttpSession session= req.getSession();
     	    session.setAttribute("name", name);
+    	    session.setAttribute("email", email);
     	    session.setAttribute("address", address);
     	    session.setAttribute("password", encryptedPassword);
     	    session.setAttribute("age", age);
