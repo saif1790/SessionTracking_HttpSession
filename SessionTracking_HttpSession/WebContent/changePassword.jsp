@@ -22,7 +22,7 @@
 						<h4 style="margin-top: 10px; text-align: center;">Change Password							</h4>
 						<div class="form center-align">
 							<form action="changePasswordSrv" method="post">
-								<input placeholder="Enter Old Password" id="pldPass" type="password"
+								<input placeholder="Enter Old Password" id="oldPass" type="password"
 									class="validate" name="oldPassword"> <input
 									placeholder="Enter New Password" id="newPassword" type="password"
 									class="validate" name="newPassword">
