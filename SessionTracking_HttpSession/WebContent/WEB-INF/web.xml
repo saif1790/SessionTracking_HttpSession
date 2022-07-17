@@ -42,6 +42,14 @@
 		<servlet-name>logOut</servlet-name>
 		<url-pattern>/logoutServlet</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>change Password</servlet-name>
+		<servlet-class>servlet.ChangePassword</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>change Password</servlet-name>
+		<url-pattern>/changePasswordSrv</url-pattern>
+	</servlet-mapping>
 	<!-- <servlet> <servlet-name>Preview</servlet-name> <servlet-class>servlet.PreviewServlet</servlet-class> 
 		</servlet> <servlet-mapping> <servlet-name>Preview</servlet-name> <url-pattern>/previewServlet</url-pattern> 
 		</servlet-mapping> -->
