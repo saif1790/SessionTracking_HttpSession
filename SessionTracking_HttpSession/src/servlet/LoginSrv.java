@@ -22,8 +22,7 @@ public class LoginSrv extends HttpServlet {
 	String validEmail;
 	String validPassword;
 
-	public void doGet(HttpServletRequest req, HttpServletResponse res)
-			throws IOException, ServletException {
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		res.setContentType("text/html");
 		PrintWriter pw = res.getWriter();
 		String email = req.getParameter("email");
@@ -31,13 +30,12 @@ public class LoginSrv extends HttpServlet {
 		System.out.println(email1);
 		String pass = req.getParameter("password");
 		String enryptedPassword = EncryptPassword.getEncryptedPassword(pass);
-		String pass1 = "'" + pass + "'";
+		String pass1 = "'" + enryptedPassword + "'";
 		try {
 
 			con = DBConnection.createConnection();
 			// select * from naukri where username='saif' and password="1234";
-			String query = "select email,password from naukri where  email="
-					+ email1 + "and password=" + pass1;
+			String query = "select email,password from naukri where  email=" + email1 + "and password=" + pass1;
 			System.out.println("query" + query);
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -47,14 +45,14 @@ public class LoginSrv extends HttpServlet {
 				validPassword = rs.getString(2);
 			}
 
-			if (email.equalsIgnoreCase(validEmail) && pass.equals(validPassword)) {
-				
+			if (email.equalsIgnoreCase(validEmail)
+					&& pass.equals(DecryptPassword.getDecryptedPassword(validPassword))) {
+
 				Calendar cal = Calendar.getInstance();
 
 				int date = cal.get(Calendar.DAY_OF_WEEK) - 1;
 
-				DateTimeFormatter dtf = DateTimeFormatter
-						.ofPattern("yyyy/MM/dd HH:mm:ss");
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 				LocalDateTime now = LocalDateTime.now();
 				System.out.println(date);
 				pw.print(dtf.format(now));
@@ -103,8 +101,7 @@ public class LoginSrv extends HttpServlet {
 
 	}
 
-	public void doPost(HttpServletRequest req, HttpServletResponse res)
-			throws IOException, ServletException {
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		doGet(req, res);
 	}
 

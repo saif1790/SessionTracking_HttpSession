@@ -3,30 +3,6 @@
 	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	<servlet>
-		<servlet-name>Servlet1</servlet-name>
-		<servlet-class>servlet.Servlet1</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Servlet1</servlet-name>
-		<url-pattern>/Srv1</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>Servlet2</servlet-name>
-		<servlet-class>servlet.Servlet2</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Servlet2</servlet-name>
-		<url-pattern>/Srv2</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>Servlet3</servlet-name>
-		<servlet-class>servlet.Servlet3</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Servlet3</servlet-name>
-		<url-pattern>/Srv3</url-pattern>
-	</servlet-mapping>
-	<servlet>
 		<servlet-name>loginSrv</servlet-name>
 		<servlet-class>servlet.LoginSrv</servlet-class>
 	</servlet>
@@ -58,10 +34,34 @@
 		<servlet-name>Forgot Password</servlet-name>
 		<url-pattern>/forgotPassword</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>Process Registration Page1</servlet-name>
+		<servlet-class>servlet.Servlet1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Process Registration Page1</servlet-name>
+		<url-pattern>/processRegistration1</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Process Registration Page2</servlet-name>
+		<servlet-class>servlet.Servlet2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Process Registration Page2</servlet-name>
+		<url-pattern>/processRegistration2</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Process Registration Page3</servlet-name>
+		<servlet-class>servlet.Servlet3</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Process Registration Page3</servlet-name>
+		<url-pattern>/processRegistration3</url-pattern>
+	</servlet-mapping>
 
-	<!-- To send email, a SMTP server is needed. So we need to configure SMTP
-	settings in the web.xml file like this: -->
-	
+	<!-- To send email, a SMTP server is needed. So we need to configure SMTP 
+		settings in the web.xml file like this: -->
+
 	<context-param>
 		<param-name>host</param-name>
 		<param-value>smtp.gmail.com</param-value>

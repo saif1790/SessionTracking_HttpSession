@@ -58,7 +58,7 @@ public class ChangePassword extends HttpServlet {
 				validPassword = rs.getString(2);
 			}
 
-			if (oldEnryptedPassword.equals(validPassword)) {
+			if (oldPassword.equals(DecryptPassword.getDecryptedPassword(validPassword))) {
 
 				if (newEncrytedPassword.equals(newConfirmedEncrytedpassword)) {
 					// change password query

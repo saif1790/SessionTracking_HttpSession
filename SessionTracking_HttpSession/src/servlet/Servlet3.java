@@ -56,10 +56,10 @@ PreparedStatement ps=null;
           {
         	  con = DBConnection.createConnection();
         	    
-        	    ps=con.prepareStatement("insert into naukri(name,password,exp,skill,city,salary,email) values(?,?,?,?,?,?,?)");
+        	    ps=con.prepareStatement("insert into naukri(name,password,exp,skill,city,salary,email,address,age) values(?,?,?,?,?,?,?,?,?)");
         	  ps.setString(1, name);
-        	 // ps.setInt(4, age1);
-        	  //ps.setString(3, address);
+        	 ps.setInt(9, age1);
+        	 ps.setString(8, address);
         	  ps.setString(5, city);
         	  ps.setInt(6, sal1);
         	  ps.setString(3, exp);
@@ -75,7 +75,8 @@ PreparedStatement ps=null;
         	  }
         	  else
         	  {
-        		  pw.println("User registered Successfully");
+					/* pw.println("User registered Successfully"); */
+        		  req.getRequestDispatcher("successPage.jsp").include(req, res);
         		  pw.println("<a href='home.html'>Home</a>");
         	  }
         	  

@@ -24,7 +24,7 @@ public class ProfileServlet extends HttpServlet
         System.out.println(session);
         if(session!=null){  
         	System.out.println(session);
-        String email=(String)session.getAttribute("email");  
+        String email=(String)session.getAttribute("email");
         out.print("<head><title>Profile Page</title></head>");
         req.getRequestDispatcher("index.html").include(req, res);
         out.print("<br/>");

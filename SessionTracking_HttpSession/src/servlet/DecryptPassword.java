@@ -1,17 +1,20 @@
 package servlet;
 
-import java.util.Base64;
-import java.util.Base64.Decoder;
+
+
+import org.apache.commons.codec.binary.Base64;
+
 
 public class DecryptPassword {
 
 	public static String getDecryptedPassword(String encryptPass) {
 		
 		System.out.println("encrypted password???????"+ encryptPass);
-		Decoder decoder = Base64.getDecoder();
-		byte[] bytes = decoder.decode(encryptPass);
+		
+		byte[] decodeBase64 = Base64.decodeBase64(encryptPass.getBytes());
+		
 
-		String decryptedPassword = new String(bytes);
+		String decryptedPassword = new String(decodeBase64);
 
 		System.out.println("Decrypted Value :: " + decryptedPassword);
 		return decryptedPassword;

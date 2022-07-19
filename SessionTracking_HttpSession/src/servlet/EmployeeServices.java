@@ -25,7 +25,7 @@ public class EmployeeServices {
 		     
 		    randomPassword = RandomStringUtils.randomAlphanumeric(10);
 		     
-		    emp.setPassword(randomPassword);
+		    emp.setPassword(EncryptPassword.getEncryptedPassword(randomPassword));
 		    dao.updateResetPassword(emp);
 		  // return randomPassword;
 		   
