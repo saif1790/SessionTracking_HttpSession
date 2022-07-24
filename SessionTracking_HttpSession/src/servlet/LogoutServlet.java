@@ -18,10 +18,11 @@ public class LogoutServlet extends HttpServlet
 		 session.invalidate();
 		 PrintWriter pw = res.getWriter();
 		 res.setContentType("text/html");
-		 req.getRequestDispatcher("index.html").include(req, res);
-		 pw.println("</br>");
-		 pw.println("<hr width='100%'/>");
-		 pw.println("User successfully logged out") ;
+		 req.getRequestDispatcher("logoutIndex.jsp").include(req, res);
+			/*
+			 * pw.println("</br>"); pw.println("<hr width='100%'/>");
+			 * pw.println("User successfully logged out") ;
+			 */
 		}
 	 public void doPost(HttpServletRequest req , HttpServletResponse res)throws IOException,ServletException
 	   {

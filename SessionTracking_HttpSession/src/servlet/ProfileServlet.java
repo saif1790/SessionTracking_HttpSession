@@ -3,7 +3,11 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,9 +19,11 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/ProfileServlet")
 public class ProfileServlet extends HttpServlet 
 {
-	 
+	Connection con;
+	Statement stmt;
+	EmployeeServices services;
   public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		 
+		 services=new EmployeeServices();
 		res.setContentType("text/html");  
         PrintWriter out=res.getWriter();   
         HttpSession session=req.getSession(false);  
@@ -25,12 +31,10 @@ public class ProfileServlet extends HttpServlet
         if(session!=null){  
         	System.out.println(session);
         String email=(String)session.getAttribute("email");
-        out.print("<head><title>Profile Page</title></head>");
-        req.getRequestDispatcher("index.html").include(req, res);
-        out.print("<br/>");
-        out.println("<hr width='100%'/>");
-        out.print("Hello, "+email.toUpperCase()+" Welcome to Profile");  
-        out.print("<h3 style='text-align:right;color:green;'><a href='changePassword.jsp'>Change Password</h3>");  
+        Employee employeeRecord = services.getEmployeeRecord(email);
+		req.setAttribute("empRec", employeeRecord);
+		RequestDispatcher rd = req.getRequestDispatcher("profile.jsp");
+		rd.forward(req, res); 
         }  
         else{  
             out.print("Please login first");  

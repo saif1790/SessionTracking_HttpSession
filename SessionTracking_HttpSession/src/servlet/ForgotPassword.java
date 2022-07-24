@@ -46,7 +46,7 @@ public class ForgotPassword extends HttpServlet {
 		String recipient = req.getParameter("email");
 		String subject = "Your Password has been reset";
 		try {
-			EmployeeServices customerServices = new EmployeeServices(req, res);
+			EmployeeServices customerServices = new EmployeeServices();
 			String newPassword = customerServices.resetCustomerPassword(recipient);
 			// addColor(newPassword, Color.RED);
 			String addColor = addColor(newPassword, Color.RED);

@@ -54,6 +54,7 @@ public class LoginSrv extends HttpServlet {
 
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 				LocalDateTime now = LocalDateTime.now();
+				req.getRequestDispatcher("index.html").include(req, res);
 				System.out.println(date);
 				pw.print(dtf.format(now));
 				if (date == 1)
@@ -73,7 +74,7 @@ public class LoginSrv extends HttpServlet {
 
 				// System.out.println("name"+name+"validName"+validName);
 				HttpSession session = req.getSession();
-				req.getRequestDispatcher("index.html").include(req, res);
+				/* req.getRequestDispatcher("index.html").include(req, res); */
 				session.setAttribute("email", validEmail);
 				req.getRequestDispatcher("welcome.jsp").include(req, res);
 				pw.println("<h3 style='text-color:red align='right'>" + email.toUpperCase() + "</h3>");

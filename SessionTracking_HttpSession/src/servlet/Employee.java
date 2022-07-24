@@ -11,8 +11,7 @@ public class Employee
 	String experience;
 	String skill;
 	String city;
-	String salary;
-	
+	int salary;
 	public int getId() {
 		return id;
 	}
@@ -67,10 +66,10 @@ public class Employee
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getSalary() {
+	public int getSalary() {
 		return salary;
 	}
-	public void setSalary(String salary) {
+	public void setSalary(int salary) {
 		this.salary = salary;
 	}
 	@Override
@@ -79,5 +78,7 @@ public class Employee
 				+ password + ", age=" + age + ", experience=" + experience + ", skill=" + skill + ", city=" + city
 				+ ", salary=" + salary + "]";
 	}
+	
+	
 	
 }

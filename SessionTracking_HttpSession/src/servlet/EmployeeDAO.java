@@ -24,10 +24,25 @@ public class EmployeeDAO
 
 		if (rs.next()) {
 			//resetPassword = rs.getString(3);
-		    employee = new Employee();
-		    employee.setId(rs.getInt(1));
-			employee.setName(rs.getString(2));
-			employee.setPassword(rs.getString(3));
+		    int userID = rs.getInt(1);
+			 String userName = rs.getString(2);
+			 String exp = rs.getString(4);
+			 String skill = rs.getString(5);
+			 String city = rs.getString(6);
+			 int salary = rs.getInt(7);
+			 String address = rs.getString(8);
+			 int age =   rs.getInt(9);
+			 String userEmail = rs.getString(10);
+			  employee = new Employee();
+			 employee.setId(userID);
+			 employee.setName(userName);
+			 employee.setExperience(exp);
+			 employee.setSkill(skill);
+			 employee.setCity(city);
+			 employee.setSalary(salary);
+			 employee.setAddress(address);
+			 employee.setAge(age);
+			 employee.setEmail(userEmail);
 			
 			
 		}
