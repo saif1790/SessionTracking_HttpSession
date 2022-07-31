@@ -19,7 +19,7 @@
 			<div class="col m6 offset-m3">
 				<div class="card">
 					<div class="card-content">
-						<h4 style="margin-top: 10px; text-align: center;">Forgot Password							</h4>
+						<h4 style="margin-top: 10px; text-align: center;">Forgot Password</h4>
 						<div class="form center-align">
 							<form action="forgotPassword" method="post">
 								<input placeholder="Enter Email" id="oldPass" type="email"

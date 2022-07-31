@@ -1,5 +1,5 @@
 <%@page import="servlet.Employee"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.List,java.util.regex.Pattern"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.util.ArrayList"%>
 
@@ -25,6 +25,22 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+<%!
+String  name= null;
+static String trimName =  null;
+String trimName1 =  null;
+ static String userName =  null;
+%>
+<%
+	Employee employee = (Employee) request.getAttribute("empRec");
+                        name=  employee.getName();
+                    	String[] nameparts = name.split(" ");
+                    	String firstlastNam = nameparts[0].charAt(0)+""+nameparts[1].charAt(0);
+                    	System.out.println(firstlastNam);
+%>
+
+
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
 		<a class="navbar-brand" href="#">Navbar</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -41,7 +57,7 @@
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Account </a>
+					aria-expanded="false"> <%=firstlastNam.toUpperCase()%> </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="ProfileServlet">Profile </a> <a
 							class="dropdown-item" href="changePassword.jsp">Change
@@ -49,20 +65,21 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="logoutServlet">Logout </a>
 					</div></li>
+				<h5 style="margin: 5px;">Login as</h5><div style="color: red; margin: 5px;"> <%=employee.getEmail()%></div>
 				<!-- <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
 				</li> -->
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search"
+			<form action="https://www.google.com/search?q=" class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" name="n1"
 					placeholder="Search" aria-label="Search">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			</form>
 		</div>
 	</nav>
-	<%
+	<%-- <%
 	Employee employee = (Employee) request.getAttribute("empRec");
 	%>
-
+ --%>
 <div class="container">
   <div class="row">
      <div class=""></div>

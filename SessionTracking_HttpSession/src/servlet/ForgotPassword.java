@@ -3,6 +3,8 @@ package servlet;
 import java.awt.Color;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URL;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -53,8 +55,10 @@ public class ForgotPassword extends HttpServlet {
 			String content = "Hi, this is your new password: " + addColor;
 		
 			content += "\nNote: for security reason, " + "you must change your password after logging in.";
+			
+			URL getUrl = new URL("http://localhost:8080/SessionTracking_HttpSession/changePassword.jsp");
 
-			message = "Your password has been reset.Please check your e-mail.\n" + recipient + " " + content;
+			message = "Your password has been reset.Please check your e-mail.\n" + recipient + " " + content+" "+getUrl;
 
 			EmailUtility.sendEmail(host, port, email, name, pass, recipient, subject, message);
 

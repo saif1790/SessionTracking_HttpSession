@@ -21,7 +21,7 @@ public class LoginSrv extends HttpServlet {
 	Statement stmt;
 	String validEmail;
 	String validPassword;
-
+   Employee employee;
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		res.setContentType("text/html");
 		PrintWriter pw = res.getWriter();
@@ -31,23 +31,33 @@ public class LoginSrv extends HttpServlet {
 		String pass = req.getParameter("password");
 		String enryptedPassword = EncryptPassword.getEncryptedPassword(pass);
 		String pass1 = "'" + enryptedPassword + "'";
+		boolean rememberMe ="true".equals(req.getParameter("checked"));
 		try {
 
 			con = DBConnection.createConnection();
 			// select * from naukri where username='saif' and password="1234";
-			String query = "select email,password from naukri where  email=" + email1 + "and password=" + pass1;
+			String query = "select * from naukri where  email=" + email1 + "and password=" + pass1;
 			System.out.println("query" + query);
 			stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 
 			if (rs.next()) {
-				validEmail = rs.getString(1);
-				validPassword = rs.getString(2);
+				employee = new Employee();
+				employee.setId(rs.getInt(1));
+				employee.setName(rs.getString(2));
+				employee.setEmail(rs.getString(10));
+				employee.setPassword(rs.getString(3));
+				/*
+				 * validEmail = rs.getString(3); validPassword = rs.getString(4);
+				 */
+				
 			}
 
-			if (email.equalsIgnoreCase(validEmail)
-					&& pass.equals(DecryptPassword.getDecryptedPassword(validPassword))) {
-
+			if (email.equalsIgnoreCase(employee.email)
+					&& pass.equals(DecryptPassword.getDecryptedPassword(employee.password))) {
+				/*
+				 * if(rememberMe) { System.out.println("remember me checked"); }
+				 */
 				Calendar cal = Calendar.getInstance();
 
 				int date = cal.get(Calendar.DAY_OF_WEEK) - 1;
@@ -75,9 +85,9 @@ public class LoginSrv extends HttpServlet {
 				// System.out.println("name"+name+"validName"+validName);
 				HttpSession session = req.getSession();
 				/* req.getRequestDispatcher("index.html").include(req, res); */
-				session.setAttribute("email", validEmail);
+				session.setAttribute("email", employee.email);
 				req.getRequestDispatcher("welcome.jsp").include(req, res);
-				pw.println("<h3 style='text-color:red align='right'>" + email.toUpperCase() + "</h3>");
+				pw.println("<h3 style='text-color:red align='right'>" + employee.name.toUpperCase() + "</h3>");
 
 				session.setMaxInactiveInterval(300);
 				// session.setAttribute("timeOutTimeInSeconds", 30);
